@@ -4,6 +4,14 @@ module.exports = {
       resolve: `gatsby-theme-blog`,
       options: {},
     },
+    {
+      resolve: 'gatsby-theme-blog-darkmode',
+      options: {}
+    },
+    {
+      resolve: `gatsby-plugin-typescript`,
+      options: {},
+    }
   ],
   // Customize your site metadata:
   siteMetadata: {
