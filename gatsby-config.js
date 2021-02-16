@@ -18,6 +18,16 @@ module.exports = {
     title: `My Blog Title`,
     author: `My Name`,
     description: `My site description...`,
+    menuLinks: [
+      {
+         name:'home',
+         link:'/'
+      },
+      {
+         name:'blog',
+         link:'/blog'
+      }
+    ],
     social: [
       {
         name: `twitter`,
