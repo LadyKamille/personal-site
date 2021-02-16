@@ -15,11 +15,11 @@ const Menu = ({ menuItems, title }) => {
           </li>
         ))}
         <li className={MenuStyles.mobileNavigationItem} key="mobile-button">
+          <span className={MenuStyles.title}>{title}</span>
           <MobileMenu
             isOpen={mobileMenuIsOpen}
             setIsOpen={setMobileMenuIsOpen}
           />
-          <span className={MenuStyles.title}>{title}</span>
         </li>
       </ul>
     </nav>

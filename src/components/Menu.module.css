@@ -22,6 +22,7 @@ nav.primary-nav {
 }
 
 .primary-nav ul li a {
+  text-decoration: none;
   display: block;
   padding: 15px 5px;
 }
@@ -34,13 +35,13 @@ nav.primary-nav {
 .primary-nav ul li.mobile-navigation-item {
   padding: 10px 0;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   order: 1;
 }
 
 .primary-nav ul li.mobile-navigation-item span.title {
-  margin: 0 0 0 15px;
+  margin: 0 15px 0 0;
 }
 
 /* Tablet menu */
