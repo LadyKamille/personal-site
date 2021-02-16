@@ -3,7 +3,7 @@ import MobileMenu from './MobileMenu';
 import MenuItem from './MenuItem';
 import MenuStyles from './Menu.module.css';
 
-const Menu = ({ menuItems }) => {
+const Menu = ({ menuItems, title }) => {
   const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false);
 
   return (
@@ -19,6 +19,7 @@ const Menu = ({ menuItems }) => {
             isOpen={mobileMenuIsOpen}
             setIsOpen={setMobileMenuIsOpen}
           />
+          <span className={MenuStyles.title}>{title}</span>
         </li>
       </ul>
     </nav>

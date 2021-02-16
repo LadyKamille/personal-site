@@ -20,7 +20,10 @@ const Layout = ({ children, ...props }) => (
     `}
     render={(data) => (
       <>
-        <Menu menuItems={data?.site?.siteMetadata?.menuLinks} />
+        <Menu
+          menuItems={data?.site?.siteMetadata?.menuLinks}
+          title={data?.site?.siteMetadata?.title}
+        />
         <Header {...props} />
         <div style={{ width: '70%', margin: '0 auto' }}>{children}</div>
       </>

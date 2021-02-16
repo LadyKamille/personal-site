@@ -6,37 +6,37 @@ module.exports = {
     },
     {
       resolve: 'gatsby-theme-blog-darkmode',
-      options: {}
+      options: {},
     },
     {
       resolve: `gatsby-plugin-typescript`,
       options: {},
-    }
+    },
   ],
   // Customize your site metadata:
   siteMetadata: {
-    title: `My Blog Title`,
-    author: `My Name`,
+    title: `My Personal Site`,
+    author: `Kamille Norris`,
     description: `My site description...`,
     menuLinks: [
       {
-         name:'home',
-         link:'/'
+        name: 'home',
+        link: '/',
       },
       {
-         name:'blog',
-         link:'/blog'
-      }
+        name: 'blog',
+        link: '/blog',
+      },
     ],
     social: [
       {
         name: `twitter`,
-        url: `https://twitter.com/gatsbyjs`,
+        url: `https://twitter.com/LadyKamille`,
       },
       {
         name: `github`,
-        url: `https://github.com/gatsbyjs`,
+        url: `https://github.com/LadyKamille`,
       },
     ],
   },
-}
+};
