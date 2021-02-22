@@ -22,12 +22,16 @@ module.exports = {
     description: `My site description...`,
     menuLinks: [
       {
-        name: 'home',
+        name: 'Home',
         link: '/',
       },
       {
-        name: 'blog',
+        name: 'Blog',
         link: '/blog',
+      },
+      {
+        name: 'D&D',
+        link: 'https://www.foundry.kamillenorris.com/setup',
       },
     ],
     social: [
