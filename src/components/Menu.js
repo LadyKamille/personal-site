@@ -8,7 +8,7 @@ const Menu = ({ menuItems, title }) => {
 
   return (
     <nav className={MenuStyles.primaryNav}>
-      <ul className={mobileMenuIsOpen && MenuStyles.open}>
+      <ul className={mobileMenuIsOpen ? MenuStyles.open : ''}>
         {menuItems.map((item) => (
           <li key={item.name}>
             <MenuItem item={item} />

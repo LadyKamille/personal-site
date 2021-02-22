@@ -24,14 +24,17 @@ module.exports = {
       {
         name: 'Home',
         link: '/',
+        external: false,
       },
       {
         name: 'Blog',
         link: '/blog',
+        external: false,
       },
       {
         name: 'D&D',
         link: 'https://www.foundry.kamillenorris.com/setup',
+        external: true,
       },
     ],
     social: [

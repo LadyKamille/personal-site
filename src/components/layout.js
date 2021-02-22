@@ -13,6 +13,7 @@ const Layout = ({ children, ...props }) => (
             menuLinks {
               name
               link
+              external
             }
           }
         }
