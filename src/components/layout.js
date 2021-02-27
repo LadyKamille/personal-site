@@ -1,9 +1,10 @@
 import React from 'react';
 import { graphql, StaticQuery } from 'gatsby';
-import Header from 'gatsby-theme-blog/src/components/header';
-import Menu from './Menu';
+import Footer from './Footer/Footer';
+import Menu from './Menu/Menu';
+import LayoutStyles from './layout.module.css';
 
-const Layout = ({ children, ...props }) => (
+const Layout = ({ children }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -15,19 +16,26 @@ const Layout = ({ children, ...props }) => (
               link
               external
             }
+            social {
+              name
+              url
+            }
           }
         }
       }
     `}
     render={(data) => (
-      <>
+      <div className={LayoutStyles.layout}>
         <Menu
           menuItems={data?.site?.siteMetadata?.menuLinks}
           title={data?.site?.siteMetadata?.title}
         />
-        <Header {...props} />
-        <div style={{ width: '70%', margin: '0 auto' }}>{children}</div>
-      </>
+        <div className={LayoutStyles.content}>{children}</div>
+        <Footer
+          menuLinks={data?.site?.siteMetadata?.menuLinks}
+          socialLinks={data?.site?.siteMetadata?.social}
+        />
+      </div>
     )}
   />
 );

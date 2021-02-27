@@ -4,6 +4,7 @@
   appearance: none;
   outline: none;
   cursor: pointer;
+  margin: 15px;
 
   width: var(--size);
   height: var(--size);
