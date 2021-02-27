@@ -7,10 +7,6 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-theme-blog-darkmode',
-      options: {},
-    },
-    {
       resolve: `gatsby-plugin-typescript`,
       options: {},
     },
