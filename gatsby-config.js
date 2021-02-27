@@ -10,10 +10,20 @@ module.exports = {
       resolve: `gatsby-plugin-typescript`,
       options: {},
     },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Kamille Norris`,
+        short_name: `KMN`,
+        start_url: `/`,
+        display: `standalone`,
+        icon: `./static/favicon.png`,
+      },
+    },
   ],
   // Customize your site metadata:
   siteMetadata: {
-    title: `My Personal Site`,
+    title: `Kamille Norris`,
     author: `Kamille Norris`,
     description: `My site description...`,
     menuLinks: [
@@ -41,6 +51,10 @@ module.exports = {
       {
         name: `github`,
         url: `https://github.com/LadyKamille`,
+      },
+      {
+        name: `linkedin`,
+        url: `https://www.linkedin.com/in/kamille-norris-a37971a4/`,
       },
     ],
   },

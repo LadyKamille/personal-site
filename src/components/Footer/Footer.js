@@ -6,6 +6,7 @@ import MenuItem from '../Menu/MenuItem';
 import FooterStyles from './Footer.module.css';
 import TwitterLogo from '../../../content/assets/twitter.svg';
 import GithubLogo from '../../../content/assets/github.png';
+import LinkedInLogo from '../../../content/assets/linkedin.png';
 
 const Footer = ({ menuLinks, socialLinks }) => (
   <footer
@@ -31,6 +32,10 @@ const Footer = ({ menuLinks, socialLinks }) => (
 
       <a href={socialLinks[1].url} target="_blank">
         <img src={GithubLogo} alt="Github" />
+      </a>
+
+      <a href={socialLinks[2].url} target="_blank">
+        <img src={LinkedInLogo} alt="LinkedIn" />
       </a>
     </div>
   </footer>
