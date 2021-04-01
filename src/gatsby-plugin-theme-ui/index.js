@@ -4,11 +4,11 @@
  * to go from default purple to a blue theme
  */
 
-const darkBlue = `#007acc`;
-const blueGray = `#282c35`;
-const lightPurple = `#D9BAE8`;
-const darkPurple = `#151318`;
-const white = `#FFFFFF`;
+const darkBlue = '#007acc';
+const blueGray = '#282c35';
+const lightPurple = '#D9BAE8';
+const darkPurple = '#151318';
+const white = '#FFFFFF';
 
 export default {
   colors: {

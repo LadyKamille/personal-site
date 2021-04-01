@@ -1,6 +1,6 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui';
 import React from 'react';
+import { jsx } from 'theme-ui';
 import MenuItem from '../Menu/MenuItem';
 
 import FooterStyles from './Footer.module.css';
@@ -26,15 +26,15 @@ const Footer = ({ menuLinks, socialLinks }) => (
       </ul>
     </div>
     <div>
-      <a href={socialLinks[0].url} target="_blank">
+      <a href={socialLinks[0].url} target="_blank" rel="noreferrer">
         <img src={TwitterLogo} alt="Twitter" />
       </a>
 
-      <a href={socialLinks[1].url} target="_blank">
+      <a href={socialLinks[1].url} target="_blank" rel="noreferrer">
         <img src={GithubLogo} alt="Github" />
       </a>
 
-      <a href={socialLinks[2].url} target="_blank">
+      <a href={socialLinks[2].url} target="_blank" rel="noreferrer">
         <img src={LinkedInLogo} alt="LinkedIn" />
       </a>
     </div>

@@ -1,0 +1,18 @@
+name: Lint
+
+on: push
+
+jobs:
+  run-linters:
+    name: Run linters
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v1
+
+      - name: Install Node.js dependencies
+        run: yarn install
+
+      - name: Run linters
+        run: yarn run eslint .

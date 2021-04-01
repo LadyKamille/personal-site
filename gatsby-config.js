@@ -1,31 +1,31 @@
 module.exports = {
   plugins: [
     {
-      resolve: `gatsby-theme-blog`,
+      resolve: 'gatsby-theme-blog',
       options: {
         basePath: '/blog',
       },
     },
     {
-      resolve: `gatsby-plugin-typescript`,
+      resolve: 'gatsby-plugin-typescript',
       options: {},
     },
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: 'gatsby-plugin-manifest',
       options: {
-        name: `Kamille Norris`,
-        short_name: `KMN`,
-        start_url: `/`,
-        display: `standalone`,
-        icon: `./static/favicon.png`,
+        name: 'Kamille Norris',
+        short_name: 'KMN',
+        start_url: '/',
+        display: 'standalone',
+        icon: './static/favicon.png',
       },
     },
   ],
   // Customize your site metadata:
   siteMetadata: {
-    title: `Kamille Norris`,
-    author: `Kamille Norris`,
-    description: `My site description...`,
+    title: 'Kamille Norris',
+    author: 'Kamille Norris',
+    description: 'My site description...',
     menuLinks: [
       {
         name: 'Home',
@@ -45,16 +45,16 @@ module.exports = {
     ],
     social: [
       {
-        name: `twitter`,
-        url: `https://twitter.com/LadyKamille`,
+        name: 'twitter',
+        url: 'https://twitter.com/LadyKamille',
       },
       {
-        name: `github`,
-        url: `https://github.com/LadyKamille`,
+        name: 'github',
+        url: 'https://github.com/LadyKamille',
       },
       {
-        name: `linkedin`,
-        url: `https://www.linkedin.com/in/kamille-norris-a37971a4/`,
+        name: 'linkedin',
+        url: 'https://www.linkedin.com/in/kamille-norris-a37971a4/',
       },
     ],
   },
