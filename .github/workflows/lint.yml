@@ -9,10 +9,10 @@ jobs:
 
     steps:
       - name: Check out Git repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v1
 
       - name: Install Node.js dependencies
-        run: yarn
+        run: yarn install
 
       - name: Run linters
         run: yarn run eslint .
