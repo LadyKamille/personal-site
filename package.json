@@ -12,6 +12,7 @@
   "dependencies": {
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
+    "mozjpeg": "7.0.0",
     "gatsby": "^2.32.3",
     "gatsby-plugin-manifest": "^2.12.1",
     "gatsby-plugin-mdx": "^1.10.0",
@@ -20,5 +21,8 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "theme-ui": "0.4.0-rc.14"
+  },
+  "resolutions": {
+    "mozjpeg": "7.0.0"
   }
 }
