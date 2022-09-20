@@ -1,14 +1,11 @@
 module.exports = {
   plugins: [
+    'gatsby-plugin-typescript',
     {
       resolve: `gatsby-theme-blog`,
       options: {
         basePath: '/blog',
       },
-    },
-    {
-      resolve: `gatsby-plugin-typescript`,
-      options: {},
     },
     {
       resolve: `gatsby-plugin-manifest`,
@@ -39,7 +36,7 @@ module.exports = {
       },
       {
         name: 'D&D',
-        link: 'https://www.foundry.kamillenorris.com/setup',
+        link: 'https://www.foundry.kamillenorris.com/',
         external: true,
       },
     ],

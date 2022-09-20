@@ -1,4 +1,5 @@
 import { Badge } from 'theme-ui';
+
 import TagStyles from './Tags.module.css';
 
 const Tags = ({ tags }) => {

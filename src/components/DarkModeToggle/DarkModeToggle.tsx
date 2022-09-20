@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx, useColorMode } from 'theme-ui';
 import React from 'react';
+
 import DarkModeStyles from './DarkModeToggle.module.css';
 
 const DarkModeToggle = () => {

@@ -2,12 +2,14 @@ import { MDXProvider } from '@mdx-js/react';
 import { graphql, StaticQuery } from 'gatsby';
 
 import Footer from './Footer/Footer';
+import Gallery from './Gallery/Gallery';
 import Menu from './Menu/Menu';
+import ResponsiveImage from './ResponsiveImage/ResponsiveImage';
 import Tags from './Tags/Tags';
 
 import LayoutStyles from './layout.module.css';
 
-const shortcodes = { Tags };
+const shortcodes = { Gallery, ResponsiveImage, Tags };
 
 const Layout = ({ children }) => (
   <StaticQuery

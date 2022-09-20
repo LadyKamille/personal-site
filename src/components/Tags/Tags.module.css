@@ -3,4 +3,10 @@
   margin: 0;
   overflow: hidden;
   padding: 0;
+  margin-top: 20px;
+}
+
+.tag {
+  display: inline-block;
+  padding-right: 10px;
 }
