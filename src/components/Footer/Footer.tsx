@@ -1,6 +1,3 @@
-/** @jsx jsx */
-import { jsx } from 'theme-ui';
-import React from 'react';
 import MenuItem from '../Menu/MenuItem';
 
 import FooterStyles from './Footer.module.css';
