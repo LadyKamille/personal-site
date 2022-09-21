@@ -7,7 +7,18 @@ import MenuItem from './MenuItem';
 
 import MenuStyles from './Menu.module.css';
 
-const Menu = ({ menuItems, title }) => {
+export interface MenuLink {
+  name: string;
+  link: string;
+  external: boolean;
+}
+
+interface Props {
+  menuItems: MenuLink[];
+  title: string;
+}
+
+const Menu: React.FC<Props> = ({ menuItems, title }): React.ReactElement => {
   const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false);
 
   return (

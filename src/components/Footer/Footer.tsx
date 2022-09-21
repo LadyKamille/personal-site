@@ -1,11 +1,26 @@
 import MenuItem from '../Menu/MenuItem';
+import { MenuLink } from '../Menu/Menu';
 
-import FooterStyles from './Footer.module.css';
 import TwitterLogo from '../../../content/assets/twitter.svg';
 import GithubLogo from '../../../content/assets/github.png';
 import LinkedInLogo from '../../../content/assets/linkedin.png';
 
-const Footer = ({ menuLinks, socialLinks }) => (
+import FooterStyles from './Footer.module.css';
+
+interface SocialLinks {
+  name: string;
+  url: string;
+}
+
+interface Props {
+  menuLinks: MenuLink[];
+  socialLinks: SocialLinks[];
+}
+
+const Footer: React.FC<Props> = ({
+  menuLinks,
+  socialLinks,
+}): React.ReactElement => (
   <footer
     className={FooterStyles.footer}
     sx={{
@@ -15,7 +30,7 @@ const Footer = ({ menuLinks, socialLinks }) => (
   >
     <div className={FooterStyles.footerNav}>
       <ul>
-        {menuLinks.map((item) => (
+        {menuLinks.map((item: MenuLink) => (
           <li key={item.name}>
             <MenuItem item={item} />
           </li>

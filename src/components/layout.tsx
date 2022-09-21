@@ -9,9 +9,13 @@ import Tags from './Tags/Tags';
 
 import LayoutStyles from './layout.module.css';
 
+interface Props {
+  children: JSX.Element;
+}
+
 const shortcodes = { Gallery, ResponsiveImage, Tags };
 
-const Layout = ({ children }) => (
+const Layout: React.FC<Props> = ({ children }): React.ReactElement => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {

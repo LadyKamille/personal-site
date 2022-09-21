@@ -2,7 +2,11 @@ import { Image } from 'theme-ui';
 
 import ResponsiveImageStyles from './ResponsiveImage.module.css';
 
-const ResponsiveImage = ({ src }: { src: string }) => (
+interface Props {
+  src: string;
+}
+
+const ResponsiveImage: React.FC<Props> = ({ src }): React.ReactElement => (
   <Image className={ResponsiveImageStyles.img} src={src} />
 );
 

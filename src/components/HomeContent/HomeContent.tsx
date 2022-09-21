@@ -2,7 +2,7 @@ import Dice from '../Dice/Dice';
 
 import HomeContentStyles from './HomeContent.module.css';
 
-const HomeContent = () => (
+const HomeContent: React.FC = (): React.ReactElement => (
   <div className={HomeContentStyles.wrapper}>
     <div>
       <h1>Rule of Cool</h1>

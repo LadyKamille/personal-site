@@ -1,8 +1,17 @@
+import React from 'react';
 import { Grid, Image } from 'theme-ui';
 
 import GalleryStyles from './Gallery.module.css';
 
-const Gallery = ({ images }) => {
+interface Img {
+  src: string;
+}
+
+interface Props {
+  images: Img[];
+}
+
+const Gallery: React.FC<Props> = ({ images }): React.ReactElement => {
   const imageNum = images.length;
 
   return (
@@ -11,7 +20,7 @@ const Gallery = ({ images }) => {
       gap={0}
       columns={[1, Math.round(imageNum / 2), imageNum]}
     >
-      {images.map((image, index) => (
+      {images.map((image: Img, index: number) => (
         <Image
           className={GalleryStyles.galleryImg}
           src={image.src}

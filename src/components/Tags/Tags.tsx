@@ -2,7 +2,11 @@ import { Badge } from 'theme-ui';
 
 import TagStyles from './Tags.module.css';
 
-const Tags = ({ tags }) => {
+interface Props {
+  tags: string[];
+}
+
+const Tags: React.FC<Props> = ({ tags }): React.ReactElement => {
   if (!tags.length) {
     return <></>;
   }
