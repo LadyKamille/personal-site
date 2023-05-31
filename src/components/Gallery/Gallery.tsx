@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Image } from 'theme-ui';
 
-import GalleryStyles from './Gallery.module.css';
+import * as GalleryStyles from './Gallery.module.css';
 
 interface Img {
   src: string;

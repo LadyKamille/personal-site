@@ -1,6 +1,6 @@
 import { Image } from 'theme-ui';
 
-import ResponsiveImageStyles from './ResponsiveImage.module.css';
+import * as ResponsiveImageStyles from './ResponsiveImage.module.css';
 
 interface Props {
   src: string;

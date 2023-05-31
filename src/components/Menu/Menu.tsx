@@ -5,7 +5,7 @@ import DarkModeToggle from '../DarkModeToggle/DarkModeToggle';
 import MobileMenu from './MobileMenu';
 import MenuItem from './MenuItem';
 
-import MenuStyles from './Menu.module.css';
+import * as MenuStyles from './Menu.module.css';
 
 export interface MenuLink {
   name: string;

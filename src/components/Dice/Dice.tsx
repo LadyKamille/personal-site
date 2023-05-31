@@ -1,4 +1,6 @@
-import DiceStyles from './Dice.module.css';
+import React from 'react';
+
+import * as DiceStyles from './Dice.module.css';
 
 const Dice: React.FC = (): React.ReactElement => (
   <div className={DiceStyles.dice}>

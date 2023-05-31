@@ -1,3 +1,7 @@
+/** @jsx jsx */
+import { jsx } from 'theme-ui';
+import React from 'react';
+
 import MenuItem from '../Menu/MenuItem';
 import { MenuLink } from '../Menu/Menu';
 
@@ -5,7 +9,7 @@ import TwitterLogo from '../../../content/assets/twitter.svg';
 import GithubLogo from '../../../content/assets/github.png';
 import LinkedInLogo from '../../../content/assets/linkedin.png';
 
-import FooterStyles from './Footer.module.css';
+import * as FooterStyles from './Footer.module.css';
 
 interface SocialLinks {
   name: string;

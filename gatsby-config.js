@@ -1,11 +1,6 @@
 module.exports = {
   plugins: [
-    {
-      resolve: `gatsby-theme-blog`,
-      options: {
-        basePath: '/blog',
-      },
-    },
+    `gatsby-plugin-typescript`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -14,12 +9,6 @@ module.exports = {
         start_url: `/`,
         display: `standalone`,
         icon: `./static/favicon.png`,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-typescript`,
-      options: {
-        isTSX: true,
       },
     },
   ],
