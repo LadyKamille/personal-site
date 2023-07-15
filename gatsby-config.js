@@ -1,6 +1,7 @@
 module.exports = {
   plugins: [
     `gatsby-plugin-typescript`,
+    `gatsby-plugin-mdx`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -9,6 +10,13 @@ module.exports = {
         start_url: `/`,
         display: `standalone`,
         icon: `./static/favicon.png`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content`,
+        name: `content`,
       },
     },
   ],
