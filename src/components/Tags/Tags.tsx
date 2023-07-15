@@ -1,6 +1,7 @@
+import React from 'react';
 import { Badge } from 'theme-ui';
 
-import TagStyles from './Tags.module.css';
+import * as TagStyles from './Tags.module.css';
 
 interface Props {
   tags: string[];

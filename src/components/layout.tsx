@@ -1,5 +1,7 @@
 import { MDXProvider } from '@mdx-js/react';
-import { graphql, StaticQuery } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
+import React from 'react';
+import { ThemeProvider } from 'theme-ui';
 
 import Footer from './Footer/Footer';
 import Gallery from './Gallery/Gallery';
@@ -7,7 +9,8 @@ import Menu from './Menu/Menu';
 import ResponsiveImage from './ResponsiveImage/ResponsiveImage';
 import Tags from './Tags/Tags';
 
-import LayoutStyles from './layout.module.css';
+import { theme } from '../../theme';
+import * as LayoutStyles from './layout.module.css';
 
 interface Props {
   children: JSX.Element;
@@ -15,27 +18,28 @@ interface Props {
 
 const shortcodes = { Gallery, ResponsiveImage, Tags };
 
-const Layout: React.FC<Props> = ({ children }): React.ReactElement => (
-  <StaticQuery
-    query={graphql`
-      query SiteTitleQuery {
-        site {
-          siteMetadata {
-            title
-            menuLinks {
-              name
-              link
-              external
-            }
-            social {
-              name
-              url
-            }
+const Layout: React.FC<Props> = ({ children }): React.ReactElement => {
+  const data = useStaticQuery(graphql`
+    query site {
+      site {
+        siteMetadata {
+          title
+          menuLinks {
+            name
+            link
+            external
+          }
+          social {
+            name
+            url
           }
         }
       }
-    `}
-    render={(data) => (
+    }
+  `);
+
+  return (
+    <ThemeProvider theme={theme}>
       <div className={LayoutStyles.layout}>
         <Menu
           menuItems={data?.site?.siteMetadata?.menuLinks}
@@ -49,8 +53,8 @@ const Layout: React.FC<Props> = ({ children }): React.ReactElement => (
           socialLinks={data?.site?.siteMetadata?.social}
         />
       </div>
-    )}
-  />
-);
+    </ThemeProvider>
+  );
+};
 
 export default Layout;

@@ -1,6 +1,8 @@
+import React from 'react';
+
 import Dice from '../Dice/Dice';
 
-import HomeContentStyles from './HomeContent.module.css';
+import * as HomeContentStyles from './HomeContent.module.css';
 
 const HomeContent: React.FC = (): React.ReactElement => (
   <div className={HomeContentStyles.wrapper}>

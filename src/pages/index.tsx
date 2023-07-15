@@ -1,3 +1,5 @@
+import React from 'react';
+
 import HomeContent from '../components/HomeContent/HomeContent';
 import Layout from '../components/layout';
 

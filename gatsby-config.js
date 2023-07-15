@@ -1,11 +1,7 @@
 module.exports = {
   plugins: [
-    {
-      resolve: `gatsby-theme-blog`,
-      options: {
-        basePath: '/blog',
-      },
-    },
+    `gatsby-plugin-typescript`,
+    `gatsby-plugin-mdx`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -17,9 +13,10 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-typescript`,
+      resolve: `gatsby-source-filesystem`,
       options: {
-        isTSX: true,
+        name: `posts`,
+        path: `${__dirname}/content/posts`,
       },
     },
   ],

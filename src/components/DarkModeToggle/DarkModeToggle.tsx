@@ -2,7 +2,7 @@
 import { jsx, useColorMode } from 'theme-ui';
 import React from 'react';
 
-import DarkModeStyles from './DarkModeToggle.module.css';
+import * as DarkModeStyles from './DarkModeToggle.module.css';
 
 const DarkModeToggle = () => {
   const [mode, setMode] = useColorMode();
