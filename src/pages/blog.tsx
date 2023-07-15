@@ -39,8 +39,8 @@ const Blog = ({ ...props }): React.ReactElement => {
           }}
         >
           <Link
-            to={`/blog${frontmatter.slug}`}
-            sx={{ variant: 'styles.a', color: 'navText' }}
+            to={`/blog/${frontmatter.slug}`}
+            sx={{ variant: 'styles.a', color: 'primary' }}
           >
             <Heading>{frontmatter.title}</Heading>
           </Link>

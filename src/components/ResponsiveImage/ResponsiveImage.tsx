@@ -1,3 +1,4 @@
+import React from 'react';
 import { Image } from 'theme-ui';
 
 import * as ResponsiveImageStyles from './ResponsiveImage.module.css';

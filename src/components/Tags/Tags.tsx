@@ -1,3 +1,4 @@
+import React from 'react';
 import { Badge } from 'theme-ui';
 
 import * as TagStyles from './Tags.module.css';
