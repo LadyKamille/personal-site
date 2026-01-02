@@ -1,9 +1,10 @@
-import headshot from './headshot.jpg';
-import dice from './dice-d20.svg';
-import github from './github.svg';
-import linkedIn from './linkedin.svg';
+import diceLogo from './assets/dice-d20.svg';
+import headshot from './assets/headshot.jpg';
+import githubLogo from './assets/github.svg';
+import linkedInLogo from './assets/linkedin.svg';
+import './App.css';
 
-export function Welcome() {
+function App() {
   return (
     <main className="h-screen overflow-y-scroll snap-y snap-mandatory md:snap-none">
       <section className="h-screen snap-start flex flex-col sm:flex-row items-center justify-center gap-16">
@@ -54,16 +55,18 @@ const resources = [
   {
     href: 'https://foundry.kamillenorris.com',
     text: 'FoundryVTT',
-    icon: dice,
+    icon: diceLogo,
   },
   {
     href: 'https://www.linkedin.com/in/kamille-norris-a37971a4',
     text: 'LinkedIn',
-    icon: linkedIn,
+    icon: linkedInLogo,
   },
   {
     href: 'https://github.com/LadyKamille',
     text: 'Github',
-    icon: github,
+    icon: githubLogo,
   },
 ];
+
+export default App;
