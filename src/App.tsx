@@ -7,8 +7,8 @@ import Experience from './features/Experience/Experience';
 
 function App() {
   return (
-    <main className="h-screen overflow-y-scroll snap-y snap-mandatory md:snap-none">
-      <section className="h-screen snap-start flex flex-col sm:flex-row items-center justify-center gap-16">
+    <main className="h-screen overflow-y-scroll  md:snap-none">
+      <section className="h-dvh snap-start flex flex-col sm:flex-row items-center justify-center gap-16">
         <div className="p-4">
           <img
             src={headshot}
@@ -49,7 +49,7 @@ function App() {
         </div>
       </section>
 
-      <section className="h-screen snap-start flex flex-col sm:flex-row items-center">
+      <section className="h-dvh overflow-y-auto snap-start flex flex-col sm:flex-row items-center">
         <Experience />
       </section>
     </main>

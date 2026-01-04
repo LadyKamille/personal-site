@@ -8,7 +8,7 @@ export default function Experience() {
   return (
     <div
       id="experience"
-      className="my-12 space-y-6 px-4 lg:max-w-250 lg:mx-auto"
+      className="my-12 space-y-6 px-4 lg:max-w-250 lg:mx-auto h-full"
     >
       <h2 className="text-2xl font-semibold">Experience</h2>
 
