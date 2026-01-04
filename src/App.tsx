@@ -7,7 +7,7 @@ import Experience from './features/Experience/Experience';
 
 function App() {
   return (
-    <main className="h-screen overflow-y-scroll  md:snap-none">
+    <main className="h-screen overflow-y-scroll snap-y snap-mandatory md:snap-none">
       <section className="h-dvh snap-start flex flex-col sm:flex-row items-center justify-center gap-16">
         <div className="p-4">
           <img
@@ -39,6 +39,7 @@ function App() {
                 >
                   <img
                     src={icon}
+                    alt=""
                     className="w-10 dark:invert hover:invert-55 hover:sepia-95 hover:scale-125 transition duration-300 ease-in-out"
                   />
                   <span className="sr-only">{text}</span>
