@@ -3,6 +3,7 @@ import headshot from './assets/headshot.jpg';
 import githubLogo from './assets/github.svg';
 import linkedInLogo from './assets/linkedin.svg';
 import './App.css';
+import Experience from './features/Experience/Experience';
 
 function App() {
   return (
@@ -46,6 +47,10 @@ function App() {
             ))}
           </ul>
         </div>
+      </section>
+
+      <section className="h-screen snap-start flex flex-col sm:flex-row items-center">
+        <Experience />
       </section>
     </main>
   );
