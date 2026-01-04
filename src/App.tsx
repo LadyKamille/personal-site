@@ -3,11 +3,12 @@ import headshot from './assets/headshot.jpg';
 import githubLogo from './assets/github.svg';
 import linkedInLogo from './assets/linkedin.svg';
 import './App.css';
+import Experience from './features/Experience/Experience';
 
 function App() {
   return (
-    <main className="h-screen overflow-y-scroll snap-y snap-mandatory md:snap-none">
-      <section className="h-screen snap-start flex flex-col sm:flex-row items-center justify-center gap-16">
+    <main className="h-screen overflow-y-scroll">
+      <section className="h-screen flex flex-col sm:flex-row items-center justify-center gap-16">
         <div className="p-4">
           <img
             src={headshot}
@@ -38,6 +39,7 @@ function App() {
                 >
                   <img
                     src={icon}
+                    alt=""
                     className="w-10 dark:invert hover:invert-55 hover:sepia-95 hover:scale-125 transition duration-300 ease-in-out"
                   />
                   <span className="sr-only">{text}</span>
@@ -46,6 +48,10 @@ function App() {
             ))}
           </ul>
         </div>
+      </section>
+
+      <section className="h-screen overflow-y-auto flex flex-col sm:flex-row items-center">
+        <Experience />
       </section>
     </main>
   );
