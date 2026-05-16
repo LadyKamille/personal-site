@@ -11,15 +11,14 @@ export default function Experience() {
       className="w-full space-y-6 px-1 sm:px-4 lg:mx-auto lg:max-w-5xl"
     >
       <div className="space-y-2">
-        <p className="text-sm font-medium uppercase tracking-[0.3em] text-rose-500">
+        <h1 className="text-sm font-medium uppercase tracking-[0.3em] text-rose-500">
           Experience
-        </p>
-        <h1 className="sr-only">Experience</h1>
+        </h1>
       </div>
 
       <div className="space-y-6">
         <div>
-          <h3 className="text-xl font-semibold">Packback</h3>
+          <h2 className="text-xl font-semibold">Packback</h2>
           <p className="text-sm italic">July 2022 - Present</p>
           <ol className="list-none space-y-2 mt-2 pl-4">
             <li
@@ -114,7 +113,7 @@ export default function Experience() {
         </div>
 
         <div>
-          <h3 className="text-xl font-semibold">Buoy Software</h3>
+          <h2 className="text-xl font-semibold">Buoy Software</h2>
           <p className="text-sm italic">August 2021 - July 2022</p>
           <ol className="list-none space-y-2 mt-2 pl-4">
             <li className={liClasses}>
@@ -140,7 +139,7 @@ export default function Experience() {
         </div>
 
         <div>
-          <h3 className="text-xl font-semibold">Packback</h3>
+          <h2 className="text-xl font-semibold">Packback</h2>
           <p className="text-sm italic">January 2021 - August 2021</p>
           <ol className="list-none space-y-2 mt-2 pl-4">
             <li className={liClasses}>
@@ -156,7 +155,7 @@ export default function Experience() {
         </div>
 
         <div>
-          <h3 className="text-xl font-semibold">Genius Plaza</h3>
+          <h2 className="text-xl font-semibold">Genius Plaza</h2>
           <p className="text-sm italic">August 2020 - January 2021</p>
           <ol className="list-none space-y-2 mt-2 pl-4">
             <li className={liClasses}>
@@ -185,7 +184,7 @@ export default function Experience() {
         </div>
 
         <div>
-          <h3 className="text-xl font-semibold">Interfolio</h3>
+          <h2 className="text-xl font-semibold">Interfolio</h2>
           <p className="text-sm italic">June 2014 - August 2020</p>
           <ol className="list-none space-y-2 mt-2 pl-4">
             <li className={liClasses}>

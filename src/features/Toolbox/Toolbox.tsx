@@ -42,10 +42,10 @@ export default function Toolbox({ resources }: ToolboxProps) {
   return (
     <section id="toolbox" className="w-full space-y-10">
       <div className="space-y-3">
-        <p className="text-sm font-medium uppercase tracking-[0.3em] text-rose-500">
+        <h1 className="text-sm font-medium uppercase tracking-[0.3em] text-rose-500">
           Toolbox
-        </p>
-        <h1 className="text-3xl font-semibold">How I build and lead</h1>
+        </h1>
+        <h2 className="text-3xl font-semibold">How I build and lead</h2>
         <p className="max-w-3xl text-base leading-8 text-gray-700 dark:text-gray-300 sm:text-lg">
           I care about durable frontend architecture, accessible interfaces, and
           team practices that keep shipping predictable even as products and

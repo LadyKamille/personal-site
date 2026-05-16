@@ -2,6 +2,7 @@ import diceLogo from './assets/dice-d20.svg';
 import headshot from './assets/headshot.jpg';
 import githubLogo from './assets/github.svg';
 import linkedInLogo from './assets/linkedin.svg';
+import type { CSSProperties } from 'react';
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import './App.css';
 import Experience from './features/Experience/Experience';
@@ -24,6 +25,15 @@ function App() {
     width: 0,
     opacity: 0,
   });
+  const [indicatorAnimation, setIndicatorAnimation] = useState<{
+    key: number;
+    fromLeft: number;
+    fromWidth: number;
+    stretchLeft: number;
+    stretchWidth: number;
+    toLeft: number;
+    toWidth: number;
+  } | null>(null);
   const navListRef = useRef<HTMLUListElement>(null);
   const buttonRefs = useRef<Record<SectionId, HTMLButtonElement | null>>({
     home: null,
@@ -31,6 +41,12 @@ function App() {
     toolbox: null,
   });
   const exitTimeoutRef = useRef<number | null>(null);
+  const indicatorTimeoutRef = useRef<number | null>(null);
+  const indicatorMetricsRef = useRef({
+    left: 0,
+    width: 0,
+    opacity: 0,
+  });
 
   const renderSection = (sectionId: SectionId) => {
     switch (sectionId) {
@@ -56,18 +72,55 @@ function App() {
     return renderSection(previousSection);
   }, [previousSection]);
 
-  const updateIndicator = () => {
+  const updateIndicator = (shouldAnimate = true) => {
     const activeButton = buttonRefs.current[activeSection];
 
     if (!activeButton) {
       return;
     }
 
-    setIndicatorStyle({
+    const nextMetrics = {
       left: activeButton.offsetLeft,
       width: activeButton.offsetWidth,
       opacity: 1,
-    });
+    };
+
+    const previousMetrics = indicatorMetricsRef.current;
+
+    if (
+      shouldAnimate &&
+      previousMetrics.opacity > 0 &&
+      (previousMetrics.left !== nextMetrics.left ||
+        previousMetrics.width !== nextMetrics.width)
+    ) {
+      const movingRight = nextMetrics.left > previousMetrics.left;
+      const stretchLeft = movingRight ? previousMetrics.left : nextMetrics.left;
+      const stretchRight = movingRight
+        ? nextMetrics.left + nextMetrics.width
+        : previousMetrics.left + previousMetrics.width;
+
+      if (indicatorTimeoutRef.current) {
+        window.clearTimeout(indicatorTimeoutRef.current);
+      }
+
+      setIndicatorAnimation((current) => ({
+        key: (current?.key ?? 0) + 1,
+        fromLeft: previousMetrics.left,
+        fromWidth: previousMetrics.width,
+        stretchLeft,
+        stretchWidth: stretchRight - stretchLeft,
+        toLeft: nextMetrics.left,
+        toWidth: nextMetrics.width,
+      }));
+
+      indicatorTimeoutRef.current = window.setTimeout(() => {
+        setIndicatorAnimation(null);
+        indicatorTimeoutRef.current = null;
+      }, 260);
+    }
+
+    indicatorMetricsRef.current = nextMetrics;
+    setIndicatorStyle(nextMetrics);
   };
 
   useLayoutEffect(() => {
@@ -75,10 +128,14 @@ function App() {
   }, [activeSection]);
 
   useEffect(() => {
-    window.addEventListener('resize', updateIndicator);
+    const handleResize = () => {
+      updateIndicator(false);
+    };
+
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      window.removeEventListener('resize', updateIndicator);
+      window.removeEventListener('resize', handleResize);
     };
   }, [activeSection]);
 
@@ -87,8 +144,37 @@ function App() {
       if (exitTimeoutRef.current) {
         window.clearTimeout(exitTimeoutRef.current);
       }
+
+      if (indicatorTimeoutRef.current) {
+        window.clearTimeout(indicatorTimeoutRef.current);
+      }
     };
   }, []);
+
+  const indicatorInlineStyle: CSSProperties & Record<`--${string}`, string> = {
+    width: `${indicatorStyle.width}px`,
+    transform: `translateX(${indicatorStyle.left}px)`,
+    opacity: indicatorStyle.opacity,
+  };
+
+  if (indicatorAnimation) {
+    indicatorInlineStyle['--indicator-from-left'] =
+      `${indicatorAnimation.fromLeft}px`;
+    indicatorInlineStyle['--indicator-from-width'] =
+      `${indicatorAnimation.fromWidth}px`;
+    indicatorInlineStyle['--indicator-stretch-left'] =
+      `${indicatorAnimation.stretchLeft}px`;
+    indicatorInlineStyle['--indicator-stretch-width'] =
+      `${indicatorAnimation.stretchWidth}px`;
+    indicatorInlineStyle['--indicator-to-left'] =
+      `${indicatorAnimation.toLeft}px`;
+    indicatorInlineStyle['--indicator-to-width'] =
+      `${indicatorAnimation.toWidth}px`;
+    indicatorInlineStyle.animationName =
+      indicatorAnimation.key % 2 === 0
+        ? 'nav-indicator-stretch-a'
+        : 'nav-indicator-stretch-b';
+  }
 
   const queueOutgoingPanelCleanup = () => {
     if (exitTimeoutRef.current) {
@@ -137,13 +223,10 @@ function App() {
             className="nav-list flex items-center gap-1 text-sm font-medium uppercase tracking-[0.2em] text-gray-600 dark:text-gray-300"
           >
             <span
+              key={indicatorAnimation?.key ?? 0}
               aria-hidden="true"
-              className="nav-indicator"
-              style={{
-                width: `${indicatorStyle.width}px`,
-                transform: `translateX(${indicatorStyle.left}px)`,
-                opacity: indicatorStyle.opacity,
-              }}
+              className={`nav-indicator ${indicatorAnimation ? 'nav-indicator--stretching' : ''}`}
+              style={indicatorInlineStyle}
             />
             {sections.map(({ id, label }) => {
               const isActive = activeSection === id;
@@ -208,16 +291,14 @@ function Home({ resources }: HomeProps) {
         />
       </div>
       <div className="space-y-6 text-center lg:max-w-3xl lg:text-left">
-        <p className="text-sm font-medium uppercase tracking-[0.3em] text-rose-500">
-          Home
-        </p>
-        <h1 className="text-4xl font-semibold sm:text-5xl">
+        <h1 className="sr-only">Home</h1>
+        <h2 className="text-3xl font-semibold sm:text-4xl">
           Hi, I&apos;m Kamille Norris
-        </h1>
-        <h2 className="text-xl text-gray-700 dark:text-gray-200 sm:text-2xl">
+        </h2>
+        <h3 className="text-xl text-gray-700 dark:text-gray-200 sm:text-2xl">
           Staff Software Engineer /{' '}
           <span className="dark:text-rose-300">Angular Expert</span>
-        </h2>
+        </h3>
 
         <p className="max-w-2xl text-base leading-8 text-gray-700 dark:text-gray-300 sm:text-lg">
           I am a Staff Software Engineer with 12 years of experience
