@@ -14,7 +14,7 @@ export default function Experience() {
         <p className="text-sm font-medium uppercase tracking-[0.3em] text-rose-500">
           Experience
         </p>
-        <h2 className="text-3xl font-semibold">Selected work history</h2>
+        <h1 className="sr-only">Experience</h1>
       </div>
 
       <div className="space-y-6">

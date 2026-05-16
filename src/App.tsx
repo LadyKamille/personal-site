@@ -9,12 +9,14 @@ import Toolbox from './features/Toolbox/Toolbox';
 
 function App() {
   const [activeSection, setActiveSection] = useState<SectionId>('home');
-  const [previousSection, setPreviousSection] = useState<SectionId | null>(null);
+  const [previousSection, setPreviousSection] = useState<SectionId | null>(
+    null,
+  );
   const [panelDirection, setPanelDirection] = useState<'forward' | 'backward'>(
-    'forward'
+    'forward',
   );
   const [exitDirection, setExitDirection] = useState<'forward' | 'backward'>(
-    'forward'
+    'forward',
   );
   const [panelAnimationKey, setPanelAnimationKey] = useState(0);
   const [indicatorStyle, setIndicatorStyle] = useState({
@@ -42,7 +44,10 @@ function App() {
     }
   };
 
-  const activeContent = useMemo(() => renderSection(activeSection), [activeSection]);
+  const activeContent = useMemo(
+    () => renderSection(activeSection),
+    [activeSection],
+  );
   const previousContent = useMemo(() => {
     if (!previousSection) {
       return null;
@@ -215,10 +220,13 @@ function Home({ resources }: HomeProps) {
         </h2>
 
         <p className="max-w-2xl text-base leading-8 text-gray-700 dark:text-gray-300 sm:text-lg">
-          <span className="italic">Technically</span> fullstack but primarily
-          frontend-focused, with over 10 years of experience building resilient
-          products, guiding architecture, and helping teams ship with
-          confidence.
+          I am a Staff Software Engineer with 12 years of experience
+          architecting, developing, and leading large-scale, full-stack web
+          applications. Proven ability to drive significant engineering
+          initiatives, resulting in measurable cost savings, improved
+          performance, and enhanced code quality. Recognized as a technical
+          leader and role model with a strong focus on technical strategy,
+          maintainability, and mentorship across multiple teams.
         </p>
 
         <ul className="flex flex-wrap justify-center gap-3 lg:justify-start">
