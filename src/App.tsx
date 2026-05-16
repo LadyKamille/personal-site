@@ -2,62 +2,161 @@ import diceLogo from './assets/dice-d20.svg';
 import headshot from './assets/headshot.jpg';
 import githubLogo from './assets/github.svg';
 import linkedInLogo from './assets/linkedin.svg';
+import { useMemo, useState } from 'react';
 import './App.css';
 import Experience from './features/Experience/Experience';
+import Toolbox from './features/Toolbox/Toolbox';
 
 function App() {
+  const [activeSection, setActiveSection] = useState<SectionId>('home');
+
+  const activeContent = useMemo(() => {
+    switch (activeSection) {
+      case 'experience':
+        return <Experience />;
+      case 'toolbox':
+        return <Toolbox resources={resources} />;
+      case 'home':
+      default:
+        return <Home resources={resources} />;
+    }
+  }, [activeSection]);
+
+  const navigateToSection = (sectionId: SectionId) => {
+    if (sectionId === activeSection) {
+      return;
+    }
+
+    if (!document.startViewTransition) {
+      setActiveSection(sectionId);
+      return;
+    }
+
+    document.startViewTransition(() => {
+      setActiveSection(sectionId);
+    });
+  };
+
   return (
-    <main className="h-screen overflow-y-scroll">
-      <section className="h-screen flex flex-col sm:flex-row items-center justify-center gap-16">
-        <div className="p-4">
-          <img
-            src={headshot}
-            alt="Kamille Norris"
-            className="block w-75 rounded-full"
-          />
-        </div>
-        <div className="space-y-6 px-4 text-center sm:text-left lg:max-w-150">
-          <h1 className="text-3xl">Hi, I'm Kamille Norris</h1>
-          <h2 className="text-xl">
-            Staff Software Engineer /{' '}
-            <span className="dark:text-rose-300">Angular Expert</span>
-          </h2>
+    <main className="app-shell box-border flex min-h-dvh flex-col overflow-hidden px-6 py-6 sm:px-10 sm:py-8 lg:px-16">
+      <header className="flex justify-end">
+        <nav
+          aria-label="Primary"
+          className="rounded-full border border-black/10 bg-white/75 px-2 py-2 shadow-sm backdrop-blur dark:border-white/10 dark:bg-gray-950/75"
+        >
+          <ul className="flex items-center gap-1 text-sm font-medium uppercase tracking-[0.2em] text-gray-600 dark:text-gray-300">
+            {sections.map(({ id, label }) => {
+              const isActive = activeSection === id;
 
-          <p>
-            <span className="italic">Technically</span> fullstack but primarily
-            frontend focused engineer with over 10 years of experience.
-          </p>
-
-          <ul className="flex justify-center sm:justify-start">
-            {resources.map(({ href, text, icon }) => (
-              <li key={href} className="p-3 first-of-type:pl-0">
-                <a
-                  className="group flex items-center gap-3"
-                  href={href}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img
-                    src={icon}
-                    alt=""
-                    className="w-10 dark:invert hover:invert-55 hover:sepia-95 hover:scale-125 transition duration-300 ease-in-out"
-                  />
-                  <span className="sr-only">{text}</span>
-                </a>
-              </li>
-            ))}
+              return (
+                <li key={id}>
+                  <button
+                    type="button"
+                    className={`rounded-full px-4 py-2 transition-colors duration-200 ${
+                      isActive
+                        ? 'bg-rose-500 text-white'
+                        : 'hover:bg-black/5 dark:hover:bg-white/10'
+                    }`}
+                    aria-current={isActive ? 'page' : undefined}
+                    onClick={() => navigateToSection(id)}
+                  >
+                    {label}
+                  </button>
+                </li>
+              );
+            })}
           </ul>
-        </div>
-      </section>
+        </nav>
+      </header>
 
-      <section className="h-screen overflow-y-auto flex flex-col sm:flex-row items-center">
-        <Experience />
+      <section className="mx-auto flex w-full max-w-6xl flex-1 min-h-0 items-center py-8 sm:py-12">
+        <div
+          key={activeSection}
+          className="app-panel max-h-full w-full overflow-y-auto"
+          style={{ viewTransitionName: 'section-panel' }}
+        >
+          {activeContent}
+        </div>
       </section>
     </main>
   );
 }
 
-const resources = [
+function Home({ resources }: HomeProps) {
+  return (
+    <section
+      id="home"
+      className="flex flex-col items-center gap-12 lg:flex-row lg:gap-16"
+    >
+      <div className="p-4">
+        <img
+          src={headshot}
+          alt="Kamille Norris"
+          className="block w-64 rounded-full shadow-lg shadow-rose-500/10 sm:w-75"
+        />
+      </div>
+      <div className="space-y-6 text-center lg:max-w-3xl lg:text-left">
+        <p className="text-sm font-medium uppercase tracking-[0.3em] text-rose-500">
+          Home
+        </p>
+        <h1 className="text-4xl font-semibold sm:text-5xl">
+          Hi, I&apos;m Kamille Norris
+        </h1>
+        <h2 className="text-xl text-gray-700 dark:text-gray-200 sm:text-2xl">
+          Staff Software Engineer /{' '}
+          <span className="dark:text-rose-300">Angular Expert</span>
+        </h2>
+
+        <p className="max-w-2xl text-base leading-8 text-gray-700 dark:text-gray-300 sm:text-lg">
+          <span className="italic">Technically</span> fullstack but primarily
+          frontend-focused, with over 10 years of experience building resilient
+          products, guiding architecture, and helping teams ship with
+          confidence.
+        </p>
+
+        <ul className="flex flex-wrap justify-center gap-3 lg:justify-start">
+          {resources.map(({ href, text, icon }) => (
+            <li key={href}>
+              <a
+                className="group flex items-center gap-3 rounded-full border border-black/10 px-4 py-3 transition duration-300 ease-in-out hover:-translate-y-0.5 hover:border-rose-500/40 hover:shadow-md dark:border-white/10"
+                href={href}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  src={icon}
+                  alt=""
+                  className="w-6 dark:invert group-hover:invert-55 group-hover:sepia-95"
+                />
+                <span className="text-sm font-medium">{text}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+type SectionId = 'home' | 'experience' | 'toolbox';
+
+interface ResourceLink {
+  href: string;
+  text: string;
+  icon: string;
+}
+
+interface HomeProps {
+  resources: ResourceLink[];
+}
+
+const sections: Array<{ id: SectionId; label: string }> = [
+  { id: 'home', label: 'home' },
+  { id: 'experience', label: 'experience' },
+  { id: 'toolbox', label: 'toolbox' },
+];
+
+const resources: ResourceLink[] = [
   {
     href: 'https://foundry.kamillenorris.com',
     text: 'FoundryVTT',

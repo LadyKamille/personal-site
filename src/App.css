@@ -1,0 +1,47 @@
+.app-shell {
+	background:
+		radial-gradient(circle at top right, rgb(244 63 94 / 0.14), transparent 28%),
+		radial-gradient(circle at bottom left, rgb(236 72 153 / 0.08), transparent 24%);
+}
+
+.app-panel {
+	contain: layout;
+}
+
+::view-transition-old(section-panel),
+::view-transition-new(section-panel) {
+	animation-duration: 320ms;
+	animation-timing-function: ease;
+}
+
+::view-transition-old(section-panel) {
+	animation-name: section-fade-out;
+}
+
+::view-transition-new(section-panel) {
+	animation-name: section-fade-in;
+}
+
+@keyframes section-fade-out {
+	from {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	to {
+		opacity: 0;
+		transform: translateY(1.5rem);
+	}
+}
+
+@keyframes section-fade-in {
+	from {
+		opacity: 0;
+		transform: translateY(-1.5rem);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}

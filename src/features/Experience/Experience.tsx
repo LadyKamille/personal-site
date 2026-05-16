@@ -6,11 +6,16 @@ export default function Experience() {
   const liClasses = `block border-l-2 border-rose-500 pl-4 mb-0 ${liBeforeClasses}`;
 
   return (
-    <div
+    <section
       id="experience"
-      className="my-12 space-y-6 px-4 lg:max-w-250 lg:mx-auto h-full"
+      className="w-full space-y-6 px-1 sm:px-4 lg:mx-auto lg:max-w-5xl"
     >
-      <h2 className="text-2xl font-semibold">Experience</h2>
+      <div className="space-y-2">
+        <p className="text-sm font-medium uppercase tracking-[0.3em] text-rose-500">
+          Experience
+        </p>
+        <h2 className="text-3xl font-semibold">Selected work history</h2>
+      </div>
 
       <div className="space-y-6">
         <div>
@@ -215,6 +220,6 @@ export default function Experience() {
           </ol>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
