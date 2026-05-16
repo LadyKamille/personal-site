@@ -314,16 +314,12 @@ function Home({ resources }: HomeProps) {
           {resources.map(({ href, text, icon }) => (
             <li key={href}>
               <a
-                className="group flex items-center gap-3 rounded-full border border-black/10 px-4 py-3 transition duration-300 ease-in-out hover:-translate-y-0.5 hover:border-rose-500/40 hover:shadow-md dark:border-white/10"
+                className="resource-link resource-link--home"
                 href={href}
                 target="_blank"
                 rel="noreferrer"
               >
-                <img
-                  src={icon}
-                  alt=""
-                  className="w-6 dark:invert group-hover:invert-55 group-hover:sepia-95"
-                />
+                <img src={icon} alt="" className="resource-link__icon" />
                 <span className="text-sm font-medium">{text}</span>
               </a>
             </li>

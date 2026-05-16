@@ -89,12 +89,12 @@ export default function Toolbox({ resources }: ToolboxProps) {
             {resources.map(({ href, text, icon }) => (
               <li key={href}>
                 <a
-                  className="flex items-center gap-3 rounded-full border border-white/15 px-4 py-3 transition hover:border-rose-400 hover:text-rose-200"
+                  className="resource-link"
                   href={href}
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <img src={icon} alt="" className="w-5 invert" />
+                  <img src={icon} alt="" className="resource-link__icon" />
                   <span className="text-sm font-medium">{text}</span>
                 </a>
               </li>
