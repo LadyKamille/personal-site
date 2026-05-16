@@ -6,42 +6,125 @@
 
 .app-panel {
 	contain: layout;
-}
-
-::view-transition-old(section-panel),
-::view-transition-new(section-panel) {
 	animation-duration: 320ms;
-	animation-timing-function: ease;
+	animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+	animation-fill-mode: both;
 }
 
-::view-transition-old(section-panel) {
-	animation-name: section-fade-out;
+.app-panel-stage {
+	contain: layout;
 }
 
-::view-transition-new(section-panel) {
-	animation-name: section-fade-in;
+.app-panel--forward {
+	animation-name: section-enter-forward;
 }
 
-@keyframes section-fade-out {
+.app-panel--backward {
+	animation-name: section-enter-backward;
+}
+
+.app-panel--exit {
+	animation-duration: 280ms;
+	animation-timing-function: ease-out;
+	animation-fill-mode: both;
+}
+
+.app-panel--exit-forward {
+	animation-name: section-exit-forward;
+}
+
+.app-panel--exit-backward {
+	animation-name: section-exit-backward;
+}
+
+.nav-list {
+	position: relative;
+}
+
+.nav-button {
+	position: relative;
+	overflow: hidden;
+	isolation: isolate;
+	z-index: 1;
+	transition:
+		color 220ms ease,
+		transform 220ms ease,
+		background-color 220ms ease;
+	will-change: transform;
+}
+
+.nav-indicator {
+	position: absolute;
+	inset-block: 0;
+	left: 0;
+	z-index: 0;
+	border-radius: 9999px;
+	background: linear-gradient(135deg, rgb(244 63 94), rgb(225 29 72));
+	box-shadow: 0 12px 30px rgb(244 63 94 / 0.28);
+	transition:
+		transform 360ms cubic-bezier(0.22, 1, 0.36, 1),
+		width 360ms cubic-bezier(0.22, 1, 0.36, 1),
+		opacity 180ms ease;
+	pointer-events: none;
+}
+
+.nav-button:hover {
+	transform: translateY(-1px);
+}
+
+.nav-button__label {
+	position: relative;
+	z-index: 1;
+}
+
+.nav-button--active {
+	text-shadow: 0 1px 1px rgb(15 23 42 / 0.16);
+}
+
+@keyframes section-enter-forward {
+	from {
+		opacity: 0;
+		transform: translateX(0.85rem) scale(0.996);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateX(0) scale(1);
+	}
+}
+
+@keyframes section-enter-backward {
+	from {
+		opacity: 0;
+		transform: translateX(-0.85rem) scale(0.996);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateX(0) scale(1);
+	}
+}
+
+@keyframes section-exit-forward {
 	from {
 		opacity: 1;
-		transform: translateY(0);
+		transform: translateX(0) scale(1);
 	}
 
 	to {
 		opacity: 0;
-		transform: translateY(1.5rem);
+		transform: translateX(-0.35rem) scale(0.998);
 	}
 }
 
-@keyframes section-fade-in {
+@keyframes section-exit-backward {
 	from {
-		opacity: 0;
-		transform: translateY(-1.5rem);
+		opacity: 1;
+		transform: translateX(0) scale(1);
 	}
 
 	to {
-		opacity: 1;
-		transform: translateY(0);
+		opacity: 0;
+		transform: translateX(0.35rem) scale(0.998);
 	}
 }
