@@ -39,6 +39,10 @@ const toolboxGroups = [
 ];
 
 export default function Toolbox({ resources }: ToolboxProps) {
+  const toolboxResources = resources.filter(
+    ({ text, href }) => text !== 'FoundryVTT' && !href.includes('foundry.'),
+  );
+
   return (
     <section id="toolbox" className="w-full space-y-10">
       <div className="space-y-3">
@@ -86,7 +90,7 @@ export default function Toolbox({ resources }: ToolboxProps) {
           </div>
 
           <ul className="flex flex-wrap gap-3">
-            {resources.map(({ href, text, icon }) => (
+            {toolboxResources.map(({ href, text, icon }) => (
               <li key={href}>
                 <a
                   className="resource-link"
