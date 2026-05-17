@@ -26,8 +26,14 @@ function ExperienceEntry({
 }: ExperienceEntryProps) {
   return (
     <article className={timelineEntryClasses}>
-      <span className="absolute left-0 top-2.5 flex size-6 items-center justify-center rounded-full border border-rose-300/40 bg-slate-950 shadow-[0_0_0_6px_rgba(2,6,23,0.9)]">
-        <span className="size-2.5 rounded-full bg-rose-500" />
+      <span
+        aria-hidden="true"
+        className="absolute left-0 top-2.5 flex size-6 items-center justify-center rounded-full border border-rose-300/40 bg-slate-950 shadow-[0_0_0_6px_rgba(2,6,23,0.9)]"
+      >
+        <span
+          aria-hidden="true"
+          className="size-2.5 rounded-full bg-rose-500"
+        />
       </span>
 
       <ExpandableSection
@@ -55,10 +61,14 @@ export default function Experience() {
   return (
     <section
       id="experience"
+      aria-labelledby="experience-heading"
       className="w-full space-y-6 px-1 sm:px-4 lg:mx-auto lg:max-w-5xl"
     >
       <div className="space-y-2">
-        <h1 className="text-sm font-medium uppercase tracking-[0.3em] text-rose-500">
+        <h1
+          id="experience-heading"
+          className="text-sm font-medium uppercase tracking-[0.3em] text-rose-500"
+        >
           Experience
         </h1>
       </div>

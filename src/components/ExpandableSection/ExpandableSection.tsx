@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 
 interface ExpandableSectionProps {
   header: React.ReactNode;
@@ -20,6 +20,9 @@ export default function ExpandableSection({
   const [isExpanded, setIsExpanded] = useState(defaultExpanded);
   const [hasAutoExpanded, setHasAutoExpanded] = useState(defaultExpanded);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const sectionId = useId();
+  const buttonId = `${sectionId}-button`;
+  const contentId = `${sectionId}-content`;
 
   useEffect(() => {
     if (!autoExpandOnView || hasAutoExpanded) {
@@ -62,8 +65,10 @@ export default function ExpandableSection({
     >
       <button
         type="button"
-        className="flex w-full items-start justify-between gap-4 text-left"
+        id={buttonId}
+        className="flex w-full items-start justify-between gap-4 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400/70 focus-visible:ring-offset-4 focus-visible:ring-offset-slate-950"
         onClick={() => setIsExpanded(!isExpanded)}
+        aria-controls={contentId}
         aria-expanded={isExpanded}
       >
         <div className="min-w-0 flex-1">{header}</div>
@@ -87,6 +92,9 @@ export default function ExpandableSection({
       </button>
 
       <div
+        id={contentId}
+        role="region"
+        aria-labelledby={buttonId}
         className={`
           grid overflow-hidden text-sm leading-7 text-slate-300
           transition-[grid-template-rows,opacity] duration-400 ease-[cubic-bezier(0.22,1,0.36,1)]

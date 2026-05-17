@@ -14,9 +14,15 @@ describe('ExpandableSection', () => {
     );
 
     const toggleButton = screen.getByRole('button', { name: /section title/i });
-    const contentRegion = screen.getByText('Hidden details').closest('[aria-hidden]');
+    const contentRegion = screen.getByRole('region', {
+      name: /section title/i,
+    });
 
     expect(toggleButton).toHaveAttribute('aria-expanded', 'false');
+    expect(toggleButton).toHaveAttribute(
+      'aria-controls',
+      contentRegion?.id ?? '',
+    );
     expect(contentRegion).toHaveAttribute('aria-hidden', 'true');
 
     await user.click(toggleButton);
@@ -32,13 +38,10 @@ describe('ExpandableSection', () => {
       </ExpandableSection>,
     );
 
-    expect(screen.getByRole('button', { name: /auto section/i })).toHaveAttribute(
-      'aria-expanded',
-      'true',
-    );
-    expect(screen.getByText('Auto details').closest('[aria-hidden]')).toHaveAttribute(
-      'aria-hidden',
-      'false',
-    );
+    const toggleButton = screen.getByRole('button', { name: /auto section/i });
+    const contentRegion = screen.getByRole('region', { name: /auto section/i });
+
+    expect(toggleButton).toHaveAttribute('aria-expanded', 'true');
+    expect(contentRegion).toHaveAttribute('aria-hidden', 'false');
   });
 });

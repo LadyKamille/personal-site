@@ -42,9 +42,16 @@ export default function Toolbox({ resources }: ToolboxProps) {
   );
 
   return (
-    <section id="toolbox" className="w-full space-y-10">
+    <section
+      id="toolbox"
+      aria-labelledby="toolbox-heading"
+      className="w-full space-y-10"
+    >
       <div className="space-y-3">
-        <h1 className="text-sm font-medium uppercase tracking-[0.3em] text-rose-500">
+        <h1
+          id="toolbox-heading"
+          className="text-sm font-medium uppercase tracking-[0.3em] text-rose-500"
+        >
           Toolbox
         </h1>
         <h2 className="text-3xl font-semibold">How I build and lead</h2>
@@ -95,6 +102,7 @@ export default function Toolbox({ resources }: ToolboxProps) {
                   href={href}
                   target="_blank"
                   rel="noreferrer"
+                  aria-label={`${text} (opens in a new tab)`}
                 >
                   <img src={icon} alt="" className="resource-link__icon" />
                   <span className="text-sm font-medium">{text}</span>

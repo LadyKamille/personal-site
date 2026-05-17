@@ -9,6 +9,7 @@ export default function Home({ resources }: HomeProps) {
   return (
     <section
       id="home"
+      aria-labelledby="home-label"
       className="flex flex-col items-center gap-12 lg:flex-row lg:gap-16"
     >
       <div className="p-4">
@@ -19,7 +20,9 @@ export default function Home({ resources }: HomeProps) {
         />
       </div>
       <div className="space-y-6 text-center lg:max-w-3xl lg:text-left">
-        <h1 className="sr-only">Home</h1>
+        <h1 id="home-label" className="sr-only">
+          Home
+        </h1>
         <h2 className="text-3xl font-semibold sm:text-4xl">
           Hi, I&apos;m Kamille Norris
         </h2>
@@ -46,6 +49,7 @@ export default function Home({ resources }: HomeProps) {
                 href={href}
                 target="_blank"
                 rel="noreferrer"
+                aria-label={`${text} (opens in a new tab)`}
               >
                 <img src={icon} alt="" className="resource-link__icon" />
                 <span className="text-sm font-medium">{text}</span>
