@@ -1,9 +1,7 @@
+import type { ResourceLink } from '../../app/types';
+
 interface ToolboxProps {
-  resources: Array<{
-    href: string;
-    text: string;
-    icon: string;
-  }>;
+  resources: ResourceLink[];
 }
 
 const toolboxGroups = [
